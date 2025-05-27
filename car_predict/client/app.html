@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Price Prediction</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <form class="form">
+        <h2>Thông Số Kỹ Thuật</h2>
+        
+        <label for="uisymboling">Hệ số rủi ro (từ -3 đến 3):</label>
+        <input class="area" type="number" step="any" id="uisymboling" placeholder="Nhập giá trị từ -3 đến 3" value="3">
+        
+        <label for="uiwheelbase">Chiều dài cơ sở (Khoảng cách giữa 2 trục bánh xe, đơn vị: inch):</label>
+        <input class="area" type="number" step="any" id="uiwheelbase" placeholder="Ví dụ: 88.6" value="88.6">
+        
+        <label for="uicarlength">Chiều dài xe (đơn vị: inch):</label>
+        <input class="area" type="number" step="any" id="uicarlength" placeholder="Ví dụ: 168.8" value="168.8">
+        
+        <label for="uicarwidth">Chiều rộng xe (đơn vị: inch):</label>
+        <input class="area" type="number" step="any" id="uicarwidth" placeholder="Ví dụ: 64.1" value="64.1">
+        
+        <label for="uicarheight">Chiều cao xe (đơn vị: inch):</label>
+        <input class="area" type="number" step="any" id="uicarheight" placeholder="Ví dụ: 48.8" value="48.8">
+        
+        <label for="uicurbweight">Trọng lượng xe (đơn vị: pound):</label>
+        <input class="area" type="number" step="any" id="uicurbweight" placeholder="Ví dụ: 2548" value="2548">
+        
+        <label for="uienginesize">Dung tích động cơ (đơn vị: inch khối):</label>
+        <input class="area" type="number" step="any" id="uienginesize" placeholder="Ví dụ: 130" value="130">
+        
+        <label for="uiboreratio">Đường kính xy-lanh:</label>
+        <input class="area" type="number" step="any" id="uiboreratio" placeholder="Ví dụ: 3.47" value="3.47">
+        
+        <label for="uistroke">Hành trình piston (đơn vị: mm):</label>
+        <input class="area" type="number" step="any" id="uistroke" placeholder="Ví dụ: 2.68" value="2.68">
+        
+        <label for="uicompressionratio">Tỷ số nén động cơ:</label>
+        <input class="area" type="number" step="any" id="uicompressionratio" placeholder="Ví dụ: 9" value="9">
+        
+        <label for="uihorsepower">Công suất động cơ (đơn vị: mã lực):</label>
+        <input class="area" type="number" step="any" id="uihorsepower" placeholder="Ví dụ: 111" value="111">
+        
+        <label for="uipeakrpm">Vòng tua tối đa (đơn vị: vòng/phút):</label>
+        <input class="area" type="number" step="any" id="uipeakrpm" placeholder="Ví dụ: 5000" value="5000">
+        
+        <label for="uicitympg">Mức tiêu thụ nhiên liệu trong thành phố (dặm/gallon):</label>
+        <input class="area" type="number" step="any" id="uicitympg" placeholder="Ví dụ: 21" value="21">
+        
+        <label for="uihighwaympg">Mức tiêu thụ nhiên liệu trên đường cao tốc (dặm/gallon):</label>
+        <input class="area" type="number" step="any" id="uihighwaympg" placeholder="Ví dụ: 27" value="27">
+
+        <h2>Thông Tin Chung</h2>
+        <div class="input-group">
+            <label for="uifueltype">Loại nhiên liệu:</label>
+            <select class="dropdown" id="uifueltype">
+                <option value="gas">Xăng</option>
+                <option value="diesel">Dầu diesel</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="uiaspiration">Kiểu nạp khí:</label>
+            <select class="dropdown" id="uiaspiration">
+                <option value="std">Hút khí tự nhiên</option>
+                <option value="turbo">Tăng áp</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="uidoornumber">Số cửa:</label>
+            <select class="dropdown" id="uidoornumber">
+                <option value="two">2 cửa</option>
+                <option value="four">4 cửa</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="uicarbody">Kiểu dáng xe:</label>
+            <select class="dropdown" id="uicarbody">
+                <option value="convertible">Mui trần</option>
+                <option value="hatchback">Hatchback</option>
+                <option value="sedan">Sedan</option>
+                <option value="wagon">Wagon</option>
+                <option value="hardtop">Hardtop</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="uidrivewheel">Hệ dẫn động:</label>
+            <select class="dropdown" id="uidrivewheel">
+                <option value="rwd">Cầu sau (RWD)</option>
+                <option value="fwd">Cầu trước (FWD)</option>
+                <option value="4wd">4 bánh (4WD)</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="uienginelocation">Vị trí động cơ:</label>
+            <select class="dropdown" id="uienginelocation">
+                <option value="front">Phía trước</option>
+                <option value="rear">Phía sau</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="uienginetype">Loại động cơ:</label>
+            <select class="dropdown" id="uienginetype">
+                <option value="dohc">DOHC (Cam kép)</option>
+                <option value="ohcv">OHCV</option>
+                <option value="ohc">OHC (Cam đơn)</option>
+                <option value="l">Thẳng hàng</option>
+                <option value="rotor">Động cơ Wankel</option>
+                <option value="ohcf">OHCF</option>
+                <option value="dohcv">DOHCV</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="uicylindernumber">Số xy-lanh:</label>
+            <select class="dropdown" id="uicylindernumber">
+                <option value="four">4 xy-lanh</option>
+                <option value="six">6 xy-lanh</option>
+                <option value="five">5 xy-lanh</option>
+                <option value="three">3 xy-lanh</option>
+                <option value="twelve">12 xy-lanh</option>
+                <option value="two">2 xy-lanh</option>
+                <option value="eight">8 xy-lanh</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="uifuelsystem">Hệ thống nhiên liệu:</label>
+            <select class="dropdown" id="uifuelsystem">
+                <option value="mpfi">Phun nhiên liệu đa điểm (MPFI)</option>
+                <option value="2bbl">Bộ chế hòa khí 2 bầu</option>
+                <option value="mfi">Phun nhiên liệu (MFI)</option>
+                <option value="1bbl">Bộ chế hòa khí 1 bầu</option>
+                <option value="spfi">Phun nhiên liệu (SPFI)</option>
+                <option value="4bbl">Bộ chế hòa khí 4 bầu</option>
+                <option value="idi">Phun nhiên liệu gián tiếp (IDI)</option>
+                <option value="spdi">Phun nhiên liệu trực tiếp (SPDI)</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="uibrand">Hãng xe:</label>
+            <select class="dropdown" id="uibrand">
+                <option value="alfa-romero">Alfa Romeo</option>
+                <option value="audi">Audi</option>
+                <option value="bmw">BMW</option>
+                <!-- ... continue the rest ... -->
+                <option value="volvo">Volvo</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="uimodel">Mẫu xe:</label>
+            <select class="dropdown" id="uimodel">
+                <option value="giulia">Giulia</option>
+                <option value="stelvio">Stelvio</option>
+                <option value="Quadrifoglio">Quadrifoglio</option>
+                <!-- ... continue the rest ... -->
+                <option value="246">246</option>
+            </select>
+        </div>
+
+        <button class="submit" onclick="onClickedPredictPrice()" type="button">Dự Đoán Giá</button>
+    </form>
+
+    <div id="uiPredictPrice" class="result"><h2></h2></div>
+</body>
+</html>
